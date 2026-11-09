@@ -239,8 +239,8 @@ main { padding-top: 0; }
 
 .hero {
   position: relative;
-  height: calc(100svh - var(--header));
-  min-height: 560px;
+  height: min(62vh, 560px);
+  min-height: 380px;
   overflow: hidden;
   color: #fff;
 }
@@ -276,10 +276,14 @@ main { padding-top: 0; }
 .hero h1,
 .page-hero h1 {
   color: #fff;
-  font-size: clamp(4.4rem, 10vw, 8.4rem);
 }
 
-.hero h1 { margin: 0.2rem 0 1.5rem; }
+.hero h1 {
+  margin: 0.2rem 0 1.1rem;
+  font-size: clamp(2.6rem, 5vw, 4rem);
+}
+
+.page-hero h1 { font-size: clamp(3.2rem, 6vw, 5rem); }
 
 .hero h1 em,
 .page-hero h1 em {
@@ -357,17 +361,26 @@ main { padding-top: 0; }
 
 .stay__layout {
   display: grid;
-  grid-template-columns: minmax(300px, 640px) 1fr;
-  gap: clamp(2rem, 4vw, 4.5rem);
-  align-items: stretch;
-  margin-left: max(4vw, calc((100% - 1320px) / 2));
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+  width: var(--frame);
+  margin-inline: auto;
 }
 
 .stay h2 { margin-bottom: 1.5rem; }
 
-.stay figure { margin: 0; }
+.stay figure {
+  margin: 0;
+  overflow: hidden;
+}
 
-.stay figure img { height: 100%; min-height: 560px; }
+.stay figure img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
 
 .lines {
   list-style: none;
@@ -417,31 +430,42 @@ main { padding-top: 0; }
 
 .band {
   position: relative;
-  height: 78vh;
-  min-height: 460px;
+  width: var(--frame);
+  height: min(42vh, 380px);
+  min-height: 240px;
+  margin: 0 auto;
   overflow: hidden;
 }
 
-.band img { position: absolute; inset: 0; }
+.band img {
+  position: absolute;
+  inset: 0;
+  object-position: center 68%;
+}
 
 .band__caption {
   position: absolute;
   z-index: 1;
-  left: max(4vw, calc((100% - 1320px) / 2));
-  bottom: 1.6rem;
+  left: 0;
+  right: 0;
+  bottom: 1rem;
   margin: 0;
-  padding: 0.7rem 0.85rem;
-  background: #fff;
-  color: var(--bg);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  padding: 0;
+  background: none;
+  color: #fff;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
 }
 
 /* Quote */
 
 .quote {
+
+  margin-top:10%;
   background: #262b2d;
   color: #fff;
   padding: clamp(5.5rem, 12vw, 9rem) 0;
@@ -573,6 +597,11 @@ main { padding-top: 0; }
 
 .page-hero img { position: absolute; inset: 0; }
 
+.page-hero--mid img,
+img[src*="cabins-forest"] {
+  object-position: center 72%;
+}
+
 .page-hero__copy {
   position: absolute;
   z-index: 1;
@@ -581,7 +610,7 @@ main { padding-top: 0; }
   bottom: 2.6rem;
 }
 
-.page-hero h1 { font-size: clamp(3.6rem, 8vw, 7rem); }
+.page-hero h1 { font-size: clamp(3.2rem, 6vw, 5rem); }
 
 .page {
   width: var(--frame);
@@ -613,6 +642,9 @@ main { padding-top: 0; }
 
 .auth {
   min-height: calc(100svh - var(--header));
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .auth__form {
@@ -620,8 +652,8 @@ main { padding-top: 0; }
   flex-direction: column;
   justify-content: center;
   width: min(440px, calc(100% - 8vw));
-  margin: 0 auto;
-  padding: clamp(3rem, 8vh, 6rem) 0;
+  margin: 0;
+  padding: 2rem 0;
 }
 
 .auth__form h1 { font-size: clamp(3rem, 5vw, 4.6rem); }
@@ -801,7 +833,7 @@ main { padding-top: 0; }
     border-right: 0;
   }
 
-  .stay__layout { margin-left: 0; width: var(--frame); margin-inline: auto; }
+  .stay figure img { height: 280px; }
 
   .stay figure .ph,
   .chapter__media .ph,
@@ -819,5 +851,5 @@ main { padding-top: 0; }
 
   .header-side { border-left: 0; padding-left: 0; }
 
-  .band { height: 62vh; }
+  .band { height: 240px; }
 }
